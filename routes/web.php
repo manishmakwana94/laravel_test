@@ -21,12 +21,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::group([ 'middleware' => ['auth:web'], 'as'=> 'student.'], function () {
-	Route::get('/studentslist', 'StudentsController@index')->name('studentslist');
 	Route::get('/getstudentlist', 'StudentsController@getStudentList')->name('getstudentlist');
-	Route::get('/createstudent', 'StudentsController@create')->name('createstudent');
-	Route::post('/storestudent', 'StudentsController@store')->name('storestudent');
-	Route::get('/editstudents/{id}', 'StudentsController@edit')->name('editstudents');
-	Route::post('/updatestudent', 'StudentsController@update')->name('updatestudent');
-	Route::post('/studentdelete', 'StudentsController@destroy')->name('studentdelete');
 	Route::post('/getcitydefault', 'StudentsController@getCityData')->name('getcitydefault');
+});
+Route::group([ 'middleware' => ['auth:web']], function () {
+	Route::resource('students','StudentsController');
 });

@@ -9,13 +9,14 @@ window._ = require('lodash');
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
-    var $       = require( 'jquery' );
 
     require('bootstrap');
 
-    require("../../node_modules/jquery/dist/jquery.min.js");
     require("../../node_modules/jquery-validation/dist/jquery.validate.min.js");
     require("../../node_modules/jquery-validation/dist/additional-methods.min.js");
+
+    require('../../node_modules/sweetalert2/dist/sweetalert2.js');
+
     require("../../node_modules/datatables/media/js/jquery.dataTables.js");
 
 } catch (e) {}

@@ -23,9 +23,10 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "datatables": "^1.10.18",
         "@fortawesome/fontawesome-free": "^5.15.1",
+        "datatables": "^1.10.18",
         "jquery-validation": "^1.19.2",
-        "pc-bootstrap4-datetimepicker": "^4.17.51"
+        "pc-bootstrap4-datetimepicker": "^4.17.51",
+        "sweetalert2": "^10.12.6"
     }
 }

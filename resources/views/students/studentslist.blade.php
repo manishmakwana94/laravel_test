@@ -6,8 +6,8 @@
       <div class="card-header">
         <h3 class="card-title">Students List</h3>
         <div class="card-tools">
-         
-          <a href="{{route('student.createstudent')}}" class="btn btn-primary" tag="button">Add New <i class="fa fa-image" aria-hidden="true"></i></a>
+
+          <a href="{{route('students.create')}}" class="btn btn-primary" tag="button">Add New <i class="fa fa-image" aria-hidden="true"></i></a>
         </div>
       </div>
       <!-- /.card-header -->
@@ -20,7 +20,7 @@
               <tr>
                 <th>Id</th>
                 <th>Student Name</th>
-                <th>Grade</th>
+                <th>Grade(%)</th>
                 <th>Date Of Birth</th>
                 <th>Actions</th>
               </tr>
@@ -39,7 +39,7 @@
 @endsection
 
 
-
+@push('script')
 @if(session()->has('message'))
   <script type="text/javascript">
     Toast.fire({
@@ -49,10 +49,9 @@
     });
   </script>
 @endif
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="text/javascript">
   $(document).ready(function () {
-    initStudentsTable();  
+    initStudentsTable();
   });
   function initStudentsTable() {
     if($(document).find('#student_list').length > 0) {
@@ -67,7 +66,7 @@
         buttons: [
 
         ],
-       
+
       "ajax":{
               "url"     : "{{ route('student.getstudentlist')}}",
               "dataType": "json",
@@ -78,7 +77,7 @@
             { "data": "id" },
             { "data": "student_name" },
             { "data": "grade" },
-            { "data": "date_of_birth" },                
+            { "data": "date_of_birth" },
             { "data": "actions" }
         ],
         columnDefs : [
@@ -87,11 +86,13 @@
         ],
         responsive:true
       });
-    }  
+    }
   }
 
-  function deleteNews(id)
+  function deletestudents(id)
   {
+
+
     Swal.fire({
       text: "are You sure whant to delete?",
       icon: 'warning',
@@ -109,16 +110,9 @@
             }
         });
         $.ajax({
-            type:'POST',
-            url: "{{route('student.studentdelete')}}",
+            type:'DELETE',
+            url: "{{ url('students/') }}/"+id,
             dataType:'json',
-            data: {
-              _token:'{{ csrf_token() }}', 
-              id:id
-             },
-            beforeSend: function(){
-            //
-            },
             success:function(data){
               Swal.fire(
                 data['title'],
@@ -136,3 +130,4 @@
   }
 
 </script>
+@endpush
