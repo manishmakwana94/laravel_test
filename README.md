@@ -30,9 +30,11 @@ Note :
 
 => if check forgot password than first add smtp credentials
 
-=> if ubantu system than PASSWORD must b "" quote
-
+=> .env file PASSWORD must b "" quote
+	
 => if u don't use database sql zip than import data using "Seeder" command
+	1) php artisan db:seed --class=CountriesSeeder
+	2) php artisan db:seed --class=CitiesSeeder
 
 => Student insert Update Delete Log Store In database 
 
