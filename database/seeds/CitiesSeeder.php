@@ -33,7 +33,7 @@ class CitiesSeeder extends Seeder
         ];
 
         foreach ($cities as $city) {
-            Countries::create($city);
+            Cities::create($city);
         }
     }
 }
